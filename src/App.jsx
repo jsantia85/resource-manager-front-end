@@ -1,3 +1,4 @@
+import './App.css'
 import { useState } from 'react'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import NavBar from './components/NavBar/NavBar'
@@ -24,6 +25,7 @@ const App = () => {
 
   return (
     <>
+    <div className='App'>
       <NavBar user={user} handleLogout={handleLogout} />
       <Routes>
         <Route path="/" element={<Landing user={user} />} />
@@ -50,6 +52,7 @@ const App = () => {
           }
         />
       </Routes>
+    </div>
     </>
   )
 }
