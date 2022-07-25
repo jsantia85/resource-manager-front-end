@@ -1,4 +1,5 @@
 import ResourceCard from "../../components/ResourceCard/ResourceCard"
+import style from './ResourcesList.module.css'
 
 const ResourcesList = (props) => {
   const profileId = props.profile
@@ -10,10 +11,11 @@ const ResourcesList = (props) => {
   return (
     <>
       <h1>Resources List</h1>
-      
-      {resourceBelongsToOwner.map(resource => 
+      <div className={style.cardContainer}>
+        {resourceBelongsToOwner.map(resource =>
           <ResourceCard key={resource._id} resource={resource}/>
         )}
+      </div>
     </>
   );
 }
