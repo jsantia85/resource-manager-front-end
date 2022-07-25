@@ -1,5 +1,5 @@
 import './App.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import NavBar from './components/NavBar/NavBar'
 import Signup from './pages/Signup/Signup'
@@ -8,9 +8,13 @@ import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
+import * as resourceService from './services/resourceService.js'
+import AddResource from './pages/AddResource/AddResource'
+import ResourcesList from './pages/ResourcesList/ResourcesList'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
+  const [resources, SetResources] = useState([])
   const navigate = useNavigate()
 
   const handleLogout = () => {
@@ -22,6 +26,20 @@ const App = () => {
   const handleSignupOrLogin = () => {
     setUser(authService.getUser())
   }
+
+  const handleAddResource = async (newResourceData) => {
+    const newResource = await resourceService.create(newResourceData)
+    SetResources([...resources, newResource])
+    navigate('/resourcesList')
+  }
+
+  useEffect(() => {
+    const fetchResources = async () => {
+      const resourceData = await resourceService.getAll()
+      SetResources(resourceData)
+    }
+    fetchResources()
+  }, [])
 
   return (
     <>
@@ -51,6 +69,21 @@ const App = () => {
             )
           }
         />
+        <Route 
+          path="/addResource"
+          element={
+            <AddResource handleAddResource={handleAddResource}/>
+          }
+        />
+        <Route 
+          path="/resourcesList"
+          element={
+            user ?
+              <ResourcesList resources={resources} user={user}/>
+              :
+              <Navigate to="/login"/>
+          }
+        /> 
       </Routes>
     </div>
     </>
