@@ -10,6 +10,7 @@ import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
 import * as resourceService from './services/resourceService.js'
 import AddResource from './pages/AddResource/AddResource'
+import ResourcesList from './pages/ResourcesList/ResourcesList'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
@@ -29,7 +30,7 @@ const App = () => {
   const handleAddResource = async (newResourceData) => {
     const newResource = await resourceService.create(newResourceData)
     SetResources([...resources, newResource])
-    navigate('/index')
+    navigate('/resourcesList')
   }
 
   return (
@@ -66,6 +67,15 @@ const App = () => {
             <AddResource handleAddResource={handleAddResource}/>
           }
         />
+        <Route 
+          path="/resourcesList"
+          element={
+            user ?
+              <ResourcesList resources={resources} user={user}/>
+              :
+              <Navigate to="/login"/>
+          }
+        /> 
       </Routes>
     </div>
     </>

@@ -1,0 +1,20 @@
+form{
+  width: 500px;
+  height: 1000px;
+}
+
+.submitBtn{
+  background-color: #E5A6A6;
+  color: #283434;
+  border-radius: 10px;
+  padding: 3px 15px;
+  border-width: 2px;
+}
+.submitBtn:hover{
+  background-color: #D7E4E9;
+}
+
+button:disabled{
+  background-color:#ebc9c9 ;
+  color: #788a8a;
+}
