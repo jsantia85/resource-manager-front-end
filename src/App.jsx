@@ -41,6 +41,7 @@ const App = () => {
     fetchResources()
   }, [])
 
+  console.log(user)
   return (
     <>
     <div className='App'>
@@ -79,7 +80,7 @@ const App = () => {
           path="/resourcesList"
           element={
             user ?
-              <ResourcesList resources={resources} user={user}/>
+              <ResourcesList resources={resources} profile={user.profile}/>
               :
               <Navigate to="/login"/>
           }
