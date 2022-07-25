@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import * as profileService from '../../services/profileService'
 
-const Profiles = () => {
+const Profiles = (props) => {
   const [profiles, setProfiles] = useState([])
 
   useEffect(() => {
@@ -12,20 +12,28 @@ const Profiles = () => {
     fetchProfiles()
   }, [])
 
+  const profileId = props.profile 
+
+  const singleProfile = profiles.filter((profile) => 
+    profile._id === profileId
+  )
+
+  console.log('THIS IS THE SINGLE PROFILE', singleProfile)
+
   return (
     <>
-      <h1>Hello. This is a list of all the profiles.</h1>
-      {profiles.length ? 
+      <h1>Hello. Welcome to your profile page.</h1>
+      {singleProfile.length ? 
         <>
-          {profiles.map(profile =>
-            <p key={profile._id}>{profile.name}</p>
+          {singleProfile.map(profile =>
+            <h3 key={profile._id}>Your Name: {profile.name}</h3>
           )}
         </>
       :
-        <p>No profiles yet</p>
+        <p>No profile yet</p>
       }
     </>
   )
 }
- 
+
 export default Profiles
