@@ -8,9 +8,12 @@ import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
+import * as resourceService from './services/resourceService.js'
+import AddResource from './pages/AddResource/AddResource'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
+  const [resources, SetResources] = useState([])
   const navigate = useNavigate()
 
   const handleLogout = () => {
@@ -21,6 +24,12 @@ const App = () => {
 
   const handleSignupOrLogin = () => {
     setUser(authService.getUser())
+  }
+
+  const handleAddResource = async (newResourceData) => {
+    const newResource = await resourceService.create(newResourceData)
+    SetResources([...resources, newResource])
+    navigate('/index')
   }
 
   return (
@@ -49,6 +58,12 @@ const App = () => {
             ) : (
               <Navigate to="/login" />
             )
+          }
+        />
+        <Route 
+          path="/addResource"
+          element={
+            <AddResource handleAddResource={handleAddResource}/>
           }
         />
       </Routes>
