@@ -27,7 +27,7 @@ const ResourcesList = (props) => {
 
       <div className={style.cardContainer}>
         {resourceBelongsToOwner.map(resource =>
-          <ResourceCard key={resource._id} resource={resource}/>
+          <ResourceCard key={resource._id} resource={resource} handleDeleteResource={props.handleDeleteResource} profileId={profileId}/>
         )}
       </div>
     </>
