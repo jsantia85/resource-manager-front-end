@@ -34,7 +34,7 @@ const SearchResources = (props) => {
       
       <div className={style.cardContainer}>
         {searchInput.length > 1 ? (filteredResults.map((resource) => {
-          return (<ResourceCard key={resource._id} resource={resource}/>)
+          return (<ResourceCard key={resource._id} resource={resource} handleDeleteResource={props.handleDeleteResource} profileId={profileId}/>)
         })) : (<h2>No Resources Found</h2>)}
       </div>
     </>

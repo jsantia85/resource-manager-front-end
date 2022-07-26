@@ -98,7 +98,7 @@ const App = () => {
           path="/searchResources"
           element={
             user ?
-              <SearchResources resources={resources} profile={user.profile} setResources={setResources}/>
+              <SearchResources resources={resources} profile={user.profile} setResources={setResources} handleDeleteResource={handleDeleteResource}/>
               :
               <Navigate to="/login"/>
           }
