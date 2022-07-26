@@ -1,6 +1,5 @@
 import ResourceCard from "../../components/ResourceCard/ResourceCard"
 import style from './ResourcesList.module.css'
-import { useState } from "react"
 
 const ResourcesList = (props) => {
   const profileId = props.profile
