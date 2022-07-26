@@ -1,8 +1,7 @@
+import { NavLink } from 'react-router-dom'
 import style from './ResourceCard.module.css'
 
 const ResourceCard = (props) => {
-  
-
   
   return(
     <>  
@@ -16,6 +15,11 @@ const ResourceCard = (props) => {
             {props.resource.category}
           </p>
           <a href={props.resource.url} className="btn btn-dark">Link</a>
+          {props.profileId === props.resource.owner?._id &&
+          <NavLink to="/resourcesList"> 
+            <button className='btn btn-dark' onClick={() => props.handleDeleteResource(props.resource._id)}>Delete</button>
+          </NavLink>
+          }
         </div>
       </div>
     </>

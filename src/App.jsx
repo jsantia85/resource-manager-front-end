@@ -42,7 +42,11 @@ const App = () => {
     fetchResources()
   }, [])
 
-  
+  const handleDeleteResource = async id => {
+    const deletedResource = await resourceService.deleteOne(id)
+    setResources(resources.filter(resource => resource._id !== deletedResource._id))
+  }
+
   return (
     <>
     <div className='App'>
@@ -85,7 +89,7 @@ const App = () => {
           path="/resourcesList"
           element={
             user ?
-              <ResourcesList resources={resources} profile={user.profile} setResources={setResources}/>
+              <ResourcesList resources={resources} profile={user.profile} setResources={setResources} handleDeleteResource={handleDeleteResource}/>
               :
               <Navigate to="/login"/>
           }
