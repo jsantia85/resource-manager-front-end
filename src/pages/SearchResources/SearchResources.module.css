@@ -9,7 +9,7 @@
   max-width: 1600px;
 }
 
-.btn {
+.searchInput {
   width: 10rem;
   height: 2rem;
   font-size: 12px;
@@ -19,4 +19,5 @@
   border: none;
   border-radius: 5px;
   color: white;
+  margin-top: 20px;
 }

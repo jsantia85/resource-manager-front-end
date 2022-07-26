@@ -11,10 +11,11 @@ import * as authService from './services/authService'
 import * as resourceService from './services/resourceService.js'
 import AddResource from './pages/AddResource/AddResource'
 import ResourcesList from './pages/ResourcesList/ResourcesList'
+import SearchResources from './pages/SearchResources/SearchResources'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
-  const [resources, SetResources] = useState([])
+  const [resources, setResources] = useState([])
   const navigate = useNavigate()
 
   const handleLogout = () => {
@@ -29,14 +30,14 @@ const App = () => {
 
   const handleAddResource = async (newResourceData) => {
     const newResource = await resourceService.create(newResourceData)
-    SetResources([...resources, newResource])
+    setResources([...resources, newResource])
     navigate('/resourcesList')
   }
 
   useEffect(() => {
     const fetchResources = async () => {
       const resourceData = await resourceService.getAll()
-      SetResources(resourceData)
+      setResources(resourceData)
     }
     fetchResources()
   }, [])
@@ -84,7 +85,16 @@ const App = () => {
           path="/resourcesList"
           element={
             user ?
-              <ResourcesList resources={resources} profile={user.profile}/>
+              <ResourcesList resources={resources} profile={user.profile} setResources={setResources}/>
+              :
+              <Navigate to="/login"/>
+          }
+        /> 
+        <Route 
+          path="/searchResources"
+          element={
+            user ?
+              <SearchResources resources={resources} profile={user.profile} setResources={setResources}/>
               :
               <Navigate to="/login"/>
           }

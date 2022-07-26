@@ -25,14 +25,9 @@ nav > a {
   background-color: #404040;
   display: flex;
   flex-flow: column nowrap;
-  /* justify-content: space-around; */
   align-items: center;
   align-content: flex-start;
 }
-
-/* nav > a:hover {
-  background-color: #D7E4E9;
-} */
 
 .App main h1 {
   color: #FFFFFF;
