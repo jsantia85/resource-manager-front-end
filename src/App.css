@@ -22,11 +22,12 @@ nav > a {
 }
 
 .App main {
-  background-color: #404040;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
   align-content: flex-start;
+  background-color: #282828;
+  background: linear-gradient(#404040, #181818);
 }
 
 .App main h1 {
