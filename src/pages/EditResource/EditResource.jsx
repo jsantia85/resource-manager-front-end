@@ -1,13 +1,15 @@
 import {useState, useRef, useEffect, } from "react"
-import styles from './AddResource.module.css'
+import styles from './EditResource.module.css'
+import { NavLink, useLocation } from "react-router-dom"
 
-function AddResource(props) {
-  const [formData, setFormData] = useState({
-    title: '',
-    category: '',
-    url: '',
-    photo: '',
-  })
+function EditResource(props) {
+  const location = useLocation()
+  const initialState = {
+    ...location.state,
+  }
+  const [formData, setFormData] = useState(initialState)
+
+  console.log(initialState)
   
   const [validForm, setValidForm] = useState(false)
 
@@ -24,12 +26,9 @@ function AddResource(props) {
   const handleSubmit = evt => {
 		evt.preventDefault()
 		const form = {
-			title: formData.title,
-			category: formData.category,
-			url: formData.url,
-      photo: formData.photo,
+			...formData,
 		}
-		props.handleAddResource(form)
+		props.handleUpdateResource(form)
 	}
 
 	return (
@@ -102,12 +101,18 @@ function AddResource(props) {
 						className={styles.submitBtn}
             disabled={!validForm}
 					>
-						Add Resource
+						Save Resource
 					</button>
+          <NavLink 
+            to="/resourcesList"
+            className="btn btn-danger"
+          >
+            Cancel
+          </NavLink>
 				</div>
 			</form>
 		</>
 	)
 }
 
-export default AddResource
+export default EditResource
