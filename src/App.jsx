@@ -12,6 +12,7 @@ import * as resourceService from './services/resourceService.js'
 import AddResource from './pages/AddResource/AddResource'
 import ResourcesList from './pages/ResourcesList/ResourcesList'
 import SearchResources from './pages/SearchResources/SearchResources'
+import EditResource from './pages/EditResource/EditResource'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
@@ -45,6 +46,15 @@ const App = () => {
   const handleDeleteResource = async id => {
     const deletedResource = await resourceService.deleteOne(id)
     setResources(resources.filter(resource => resource._id !== deletedResource._id))
+  }
+
+  const handleUpdateResource = async (updatedResourceData) => {
+    const updatedResource = await resourceService.update(updatedResourceData)
+    const newResourcesArray = resources.map(resource =>
+      resource._id === updatedResource._id ? updatedResource : resource)
+
+    setResources(newResourcesArray)
+    navigate('/resourcesList')
   }
 
   return (
@@ -103,6 +113,9 @@ const App = () => {
               <Navigate to="/login"/>
           }
         /> 
+        <Route 
+            path='/edit' 
+            element={<EditResource profile={user.profile} handleUpdateResource={handleUpdateResource}/>}/>
       </Routes>
     </div>
     </>

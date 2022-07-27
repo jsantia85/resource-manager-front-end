@@ -19,7 +19,6 @@ async function getAll() {
 }
 
 async function deleteOne(id) {
-  console.log('DeleteOne')
   const res = await fetch(`${BASE_URL}/${id}`, {
     method: 'DELETE',
     headers: {
@@ -29,8 +28,21 @@ async function deleteOne(id) {
   return res.json()
 }
 
+async function update(resource) {
+  const res = await fetch(`${BASE_URL}/${resource._id}`, {
+    method: 'PUT',
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(resource)
+  })
+  return res.json()
+}
+
 export {
 	create,
   getAll,
   deleteOne,
+  update,
 }
