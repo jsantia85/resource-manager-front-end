@@ -1,5 +1,5 @@
 import ResourceCard from "../../components/ResourceCard/ResourceCard"
-import style from './SearchResources.module.css'
+import styles from './SearchResources.module.css'
 import { useState } from "react"
 
 const SearchResources = (props) => {
@@ -30,12 +30,12 @@ const SearchResources = (props) => {
 
   return (
     <>
-      <input className={style.searchInput} type="search" placeholder="Search..." onChange={(e) => searchItems(e.target.value)}/>
+      <input className={styles.searchInput} type="search" placeholder="Search..." onChange={(e) => searchItems(e.target.value)}/>
       
-      <div className={style.cardContainer}>
+      <div className={styles.cardContainer}>
         {searchInput.length > 1 ? (filteredResults.map((resource) => {
           return (<ResourceCard key={resource._id} resource={resource} handleDeleteResource={props.handleDeleteResource} profileId={profileId}/>)
-        })) : (<h2>No Resources Found</h2>)}
+        })) : (<h2 className={styles.emptyResult}>No Resources Found</h2>)}
       </div>
     </>
   );
