@@ -59,8 +59,6 @@ const App = () => {
     setResources(newResourcesArray);
     navigate("/resourcesList");
   };
-
-  console.log(user.profile)
   
   return (
     <>
