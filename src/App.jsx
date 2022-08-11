@@ -60,6 +60,8 @@ const App = () => {
     navigate("/resourcesList");
   };
 
+  console.log(user.profile)
+  
   return (
     <>
       <div className="App">
@@ -76,7 +78,7 @@ const App = () => {
           />
           <Route
             path="/profiles"
-            element={user ? <Profiles /> : <Navigate to="/login" />}
+            element={user ? <Profiles profile={user.profile}/> : <Navigate to="/login" />}
           />
           <Route
             path="/changePassword"
@@ -90,7 +92,13 @@ const App = () => {
           />
           <Route
             path="/addResource"
-            element={<AddResource handleAddResource={handleAddResource} />}
+            element={
+              user ? (
+                <AddResource handleAddResource={handleAddResource}/>
+              ) : (
+                <Navigate to="/login" />
+              )
+            }
           />
           <Route
             path="/resourcesList"
@@ -100,6 +108,7 @@ const App = () => {
                   resources={resources}
                   setResources={setResources}
                   handleDeleteResource={handleDeleteResource}
+                  profile={user.profile}
                 />
               ) : (
                 <Navigate to="/login" />
@@ -114,6 +123,7 @@ const App = () => {
                   resources={resources}
                   setResources={setResources}
                   handleDeleteResource={handleDeleteResource}
+                  profile={user.profile}
                 />
               ) : (
                 <Navigate to="/login" />
