@@ -27,9 +27,9 @@ const NavBar = ({ user, handleLogout }) => {
                     <li class="nav-item">
                       <NavLink to="addResource" className={styles.liChild}>Add Resource</NavLink>
                     </li>
-                    <li class="nav-item">
+                    {/* <li class="nav-item">
                       <NavLink to="/profiles" className={styles.liChild}>Profile</NavLink>
-                    </li>
+                    </li> */}
                     <li class="nav-item">
                       <NavLink to="" onClick={handleLogout} className={styles.liChild}>Log Out</NavLink>
                     </li>
