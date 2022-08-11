@@ -1,10 +1,11 @@
 import styles from './Landing.module.css'
 
-const Landing = ({ user }) => {
+const Landing = (props) => {
   return (
-    <main className={styles.container}>
-      <h1>Hello, {user ? user.name : 'friend'}</h1>
-    </main>
+    <>
+      <h1 className={styles.landingTitle}>Resource Manager</h1>
+    </>
+    
   )
 }
 

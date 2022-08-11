@@ -1,11 +1,12 @@
 import { NavLink } from 'react-router-dom'
+import styles from './NavBar.module.css'
 
 const NavBar = ({ user, handleLogout }) => {
   return (
     <>
       <nav class="navbar navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
-          <NavLink to="/">Home</NavLink>
+          <NavLink to="/" className={styles.liChild}><img src="/favicon.ico" alt="File icon" /></NavLink>
           <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -18,31 +19,31 @@ const NavBar = ({ user, handleLogout }) => {
                 {user ? 
                   <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                     <li class="nav-item">
-                      <NavLink to="/resourcesList">All Resources</NavLink>
+                      <NavLink to="/resourcesList" className={styles.liChild}>All Resources</NavLink>
                     </li>
                     <li class="nav-item">
-                      <NavLink to="/searchResources">Search Resources</NavLink>
+                      <NavLink to="/searchResources" className={styles.liChild}>Search Resources</NavLink>
                     </li>
                     <li class="nav-item">
-                      <NavLink to="addResource">Add Resource</NavLink>
+                      <NavLink to="addResource" className={styles.liChild}>Add Resource</NavLink>
                     </li>
                     <li class="nav-item">
-                      <NavLink to="/profiles">Profile</NavLink>
+                      <NavLink to="/profiles" className={styles.liChild}>Profile</NavLink>
                     </li>
                     <li class="nav-item">
-                      <NavLink to="" onClick={handleLogout}>LOG OUT</NavLink>
+                      <NavLink to="" onClick={handleLogout} className={styles.liChild}>LOG OUT</NavLink>
                     </li>
                     <li class="nav-item">
-                      <NavLink to="/changePassword">Change Password</NavLink>
+                      <NavLink to="/changePassword" className={styles.liChild}>Change Password</NavLink>
                     </li>
                   </ul>
                 : 
                   <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                     <li class="nav-item">
-                      <NavLink to="/login">Log In</NavLink>
+                      <NavLink to="/login" className={styles.liChild}>Log In</NavLink>
                     </li>
                     <li class="nav-item">
-                      <NavLink to="/signup">Sign Up</NavLink>
+                      <NavLink to="/signup" className={styles.liChild}>Sign Up</NavLink>
                     </li>
                   </ul>
                 }
