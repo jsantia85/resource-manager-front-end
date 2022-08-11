@@ -5,7 +5,7 @@ const Landing = () => {
   return (
     <>
       <div className={styles.content}>
-        <img src="imgs/landingImage.svg" alt="Landing" />
+        <img src="imgs/landingImage.svg" alt="Landing" className={styles.img}/>
       </div>
     </>
     
