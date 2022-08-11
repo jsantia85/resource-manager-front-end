@@ -1,4 +1,13 @@
 .liChild {
-  color: #FFFFFF;
+  color: #66FCF1;
   text-decoration: none;
+  
+}
+
+.homeBtn {
+  padding-right: 10px;
+}
+
+.liChild:hover {
+  color: #FFFFFF;
 }
