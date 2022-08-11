@@ -1,9 +1,12 @@
 import styles from './Landing.module.css'
 
-const Landing = (props) => {
+const Landing = () => {
+
   return (
     <>
-      <h1 className={styles.landingTitle}>Resource Manager</h1>
+      <div className={styles.content}>
+        <img src="imgs/landingImage.svg" alt="Landing" />
+      </div>
     </>
     
   )
