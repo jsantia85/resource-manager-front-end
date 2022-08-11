@@ -1,10 +1,8 @@
 .content {
   background-image: "/imgs/landingImage.svg";
+  background-position: center center;
   background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
-.landingTitle {
-  margin-top: 100px;
-}
