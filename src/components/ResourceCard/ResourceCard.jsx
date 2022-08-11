@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import style from './ResourceCard.module.css'
+import styles from './ResourceCard.module.css'
 
 const ResourceCard = (props) => {
   console.log(props.resource)
@@ -7,18 +7,18 @@ const ResourceCard = (props) => {
 
   return(
     <>  
-      <div className={style.card} >
+      <div className={styles.card} >
       <img src={props.resource.photo} className="card-img-top" alt="Pic"/>
-        <div className={style.cardBody}>
-          <h5 className={style.cardTitle}>
+        <div className={styles.cardBody}>
+          <h5 className={styles.cardTitle}>
             {props.resource.title}
           </h5>
-          <p className={style.text}>
+          <p className={styles.text}>
             {props.resource.category}
           </p>
-          <a href={props.resource.url} className="btn btn-dark">Link</a>
           {props.profileId === props.resource.owner?._id &&
-            <div>
+            <div className={styles.btnContainer}>
+              <a href={props.resource.url} className="btn btn-dark">Link</a>
               <NavLink
                 to="/edit"
                 className="btn btn-dark"
