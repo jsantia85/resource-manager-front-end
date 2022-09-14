@@ -9,8 +9,6 @@ const SearchResources = (props) => {
     resource.owner._id === profileId
   ) 
 
-  // Btn used for checking if state was properly reversed
-  // <button onClick={() => console.log(props.resources)}>Log Data</button>
 
   const [searchInput, setSearchInput] = useState('')
 
